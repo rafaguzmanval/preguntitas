@@ -116,7 +116,7 @@ class InicioState extends State<Inicio> {
                 }),
             title: Center(
                 child: Text(
-                  'TuCole',
+                  'Preguntas',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 30,
@@ -249,6 +249,7 @@ class InicioState extends State<Inicio> {
         Text(
             'Rafael Guzmán , Blanca Abril , Javier Mesa , José Paneque , Hicham Bouchemma , Emilio Vargas'
                 .toUpperCase()),
+        SizedBox(height: 15,),
         ElevatedButton(
           child: Container(
               width: anchoUsuarios.toDouble(),
