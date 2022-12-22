@@ -31,7 +31,7 @@ class InicioState extends State<Inicio> {
 
 
     super.initState();
-    cogerInformacion();
+
     //obtenerAutenticacion();
     //inicializar();
     //Notificacion.showBigTextNotification(title: "Bienvenio", body: "LA gran notificacion", fln: flutterLocalNotificationsPlugin);
