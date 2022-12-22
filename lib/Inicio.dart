@@ -1,6 +1,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:preguntitas/acceso_bd.dart';
 
 import 'package:preguntitas/registro.dart';
 
@@ -31,7 +32,7 @@ class InicioState extends State<Inicio> {
 
 
     super.initState();
-    cogerInformacion();
+    AccesoBD.consultarNuevaPregunta();
     //obtenerAutenticacion();
     //inicializar();
     //Notificacion.showBigTextNotification(title: "Bienvenio", body: "LA gran notificacion", fln: flutterLocalNotificationsPlugin);

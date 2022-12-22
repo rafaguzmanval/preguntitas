@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:preguntitas/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,7 +20,10 @@ class AccesoBD{
    }
 
    static consultarNuevaPregunta() async{
-     //await db.collection("preguntas")
+     var consulta = await db.collection("preguntas").get();
+     var pregunta = consulta.docs[Random().nextInt(consulta.size)];
+     print(pregunta.get("pregunta"));
+     print(pregunta.get("respuestas"));
    }
 
 }
