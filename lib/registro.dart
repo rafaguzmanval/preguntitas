@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'acceso_bd.dart';
 
 class Registro extends StatefulWidget {
   @override
@@ -8,7 +9,10 @@ class Registro extends StatefulWidget {
 class RegistroState extends State<Registro> {
   int _counter = 0;
   final controllerISBN = TextEditingController();
+  String rolElegido = 'nada';
   List<String> items = <String>['Normal','Admin'];
+
+
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -34,33 +38,26 @@ class RegistroState extends State<Registro> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextField(
-              controller: controllerISBN,
-              decoration: const InputDecoration(
-                  hintText: 'Introduce un nombre'
+            Container(
+              width: 500,
+              alignment: Alignment.center,
+              child: TextField(
+                controller: controllerISBN,
+                decoration: const InputDecoration(
+                    hintText: 'Introduce un nombre'
+                ),
               ),
             ),
-            DropdownButton<String>(
-                items: items.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                    );
-                    }).toList(),
-                onChanged: (String? value) {
-                    // This is called when the user selects an item.
-                    setState(() {
-                  });
-                }
-                ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
+          AccesoBD.registrarUsuario(controllerISBN.text);
+          controllerISBN.text = '';
         },
-        tooltip: 'Buscar',
-        child: const Icon(Icons.search),
+        tooltip: 'Registrar',
+        child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
