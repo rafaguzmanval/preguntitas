@@ -14,7 +14,7 @@ iniciarBaseDatos() async
 
 
 void main() {
-  iniciarBaseDatos();
+
   runApp(const MyApp());
 }
 
@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    iniciarBaseDatos();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       //supportedLocales: [Locale('es', 'ES'), Locale('en', 'US')],
