@@ -143,6 +143,7 @@ class InicioState extends State<Inicio> {
             var tipo = await AccesoBD.comprobarNick(controllerISBN.text);
 
             if(tipo==null){
+              print("error");
               error = true;
             }else{
               error = false;

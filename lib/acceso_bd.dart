@@ -12,10 +12,11 @@ class AccesoBD{
 
    static comprobarNick(nick) async
    {
-     await db.collection("usuarios").where("nick" , isEqualTo: nick).get().then((result){
+     return await db.collection("usuarios").where("nick" , isEqualTo: nick).get().then((result){
 
        if(result.size == 0)
          {
+           print(result.docs[0].id);
            return null;
          }
        else
