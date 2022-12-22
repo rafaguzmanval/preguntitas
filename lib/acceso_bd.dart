@@ -26,4 +26,13 @@ class AccesoBD{
      print(pregunta.get("respuestas"));
    }
 
+   static addPregunta(pregunta,respuestas) async
+   {
+     Map<String,dynamic> nueva = {
+       'pregunta': pregunta,
+       'respuestas' : respuestas
+     };
+     await db.collection("preguntas").add(nueva);
+   }
+
 }
