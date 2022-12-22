@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:preguntitas/CrearPregunta.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -39,7 +40,13 @@ class HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ElevatedButton(onPressed: (){}, child: Text('Crear Cuestionario'))
+        ElevatedButton(onPressed: ()async {
+      await Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  CrearPregunta()));
+    }, child: Text('Crear Cuestionario'))
       ],
     );
   }
