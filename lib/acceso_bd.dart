@@ -8,18 +8,16 @@ class AccesoBD{
    static var db = FirebaseFirestore.instance;
 
 
-   cogerInformacion()async{
-
-     await db.collection("usuarios").get().then((consulta){
-
-     });
-   }
-
-   registrarUsuario(nick) async{
+   static registrarUsuario(nick) async{
      Map<String,dynamic> usuario = {
        'nick':nick,
        'tipo' : "usuario"
      };
      await db.collection("usuarios").add(usuario);
    }
+
+   static consultarNuevaPregunta() async{
+     await db.collection("preguntas")
+   }
+
 }
