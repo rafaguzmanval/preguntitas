@@ -18,6 +18,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:preguntitas/arasaac.dart';
 
 
 class CrearPregunta extends StatefulWidget {
@@ -36,6 +37,11 @@ class CrearPreguntaState extends State<CrearPregunta> {
   var rol = "administrador";
 
   final controladorNombre = TextEditingController();
+  final controladorRespuesta1 = TextEditingController();
+  final controladorRespuesta2 = TextEditingController();
+  final controladorRespuesta3 = TextEditingController();
+  final controladorRespuesta4 = TextEditingController();
+
 
   ///Cuándo se pasa de página es necesario que todos los controladores de los formularios y de los reproductores de vídeo se destruyan.
   @override
@@ -140,22 +146,91 @@ class CrearPreguntaState extends State<CrearPregunta> {
           SizedBox(
             height: 5,
           ),
-          DropdownButton(
-            style: TextStyle(),
-            value: tipoElegido,
-            items: [
-              "NINGÚN TIPO ELEGIDO"
-            ].map((String value) {
-              return DropdownMenuItem(
-                value: value,
-                child: Text(value, style: TextStyle(fontSize: 30.0)),
-              );
-            }).toList(),
-            onChanged: (String? value) {
-              setState(() {
-                tipoElegido = value!;
-              });
-            },
+          SizedBox(
+            width: 500,
+            child: TextField(
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              obscureText: false,
+              maxLength: 40,
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                    BorderSide(width: 1.0),
+                  ),
+                  border: OutlineInputBorder(),
+                  hintText: 'INTRODUCE RESPUESTA 1 *',
+                  hintStyle: TextStyle(fontWeight: FontWeight.bold,)),
+              controller: controladorRespuesta1,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          SizedBox(
+            width: 500,
+            child: TextField(
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              obscureText: false,
+              maxLength: 40,
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                    BorderSide(width: 1.0),
+                  ),
+                  border: OutlineInputBorder(),
+                  hintText: 'INTRODUCE RESPUESTA 2 *',
+                  hintStyle: TextStyle(fontWeight: FontWeight.bold,)),
+              controller: controladorRespuesta2,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          SizedBox(
+            width: 500,
+            child: TextField(
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              obscureText: false,
+              maxLength: 40,
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                    BorderSide(width: 1.0),
+                  ),
+                  border: OutlineInputBorder(),
+                  hintText: 'INTRODUCE RESPUESTA 3 *',
+                  hintStyle: TextStyle(fontWeight: FontWeight.bold,)),
+              controller: controladorRespuesta3,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          SizedBox(
+            width: 500,
+            child: TextField(
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              obscureText: false,
+              maxLength: 40,
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                    BorderSide(width: 1.0),
+                  ),
+                  border: OutlineInputBorder(),
+                  hintText: 'INTRODUCE RESPUESTA 4 *',
+                  hintStyle: TextStyle(fontWeight: FontWeight.bold,)),
+              controller: controladorRespuesta4,
+            ),
           ),
           SizedBox(
             height: 10,
@@ -172,12 +247,11 @@ class CrearPreguntaState extends State<CrearPregunta> {
             height: 15,
           ),
           ElevatedButton(
-              child: Image.asset(
-                'assets/logo-arasaac.png',
-                width: 140,
-                height: 100,
+              child: Text(
+                "ELIGE FOTO PA LA PREGUNTA",
               ),
               onPressed: () async {
+                fotoTomada = await buscadorArasaac(context: context);
                 actualizar();
               }),
           SizedBox(
@@ -226,10 +300,8 @@ class CrearPreguntaState extends State<CrearPregunta> {
                   alignment: Alignment.bottomRight,
                   margin: EdgeInsets.only(right: 10),
                   child: ElevatedButton(
-                    child: Image.asset(
-                      'assets/disquete.png',
-                      width: 140,
-                      height: 100,
+                    child: Icon(
+                      Icons.save,
                     ),
                     onPressed: () {
                       crearTablon();
