@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:preguntitas/Inicio.dart';
-
 import 'package:preguntitas/registro.dart';
-
-
-
-
 
 void main() {
   runApp(const MyApp());

@@ -1,21 +1,3 @@
-/*
-*   Archivo: loginpage.dart
-*
-*   Descripción:
-*   Pagina que consulta el alumno para ver la lista de tareas pendientes
-*   Includes:
-*   main.dart : Usar metodos que estan definidos.
-*   passport_method.dart : Enumeracion de los metodos de acceso.
-*   password_login.dart: Redirigirse a la pagina de password.
-*   flutter_local_notifications.dart : Notificaciones.
-*   notificacion.dart : Clase para construir las notificaciones.
-*   firebase_auth.dart : Acceso a la firebase para autentificación.
-*   sesion.dart : Contiene los datos de la sesion actual (sirve de puntero a la página actual donde se encuentra el usuario)
-*   acceso_bd.dart: Metodos de acceso a la base de datos.
-*   material.dart: Se utiliza para dar colores y diseño a la aplicacion.
-* */
-
-
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
