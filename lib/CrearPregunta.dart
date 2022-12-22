@@ -15,7 +15,7 @@
 * */
 
 import 'dart:io';
-
+import 'package:preguntitas/acceso_bd.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:preguntitas/arasaac.dart';
@@ -28,7 +28,7 @@ class CrearPregunta extends StatefulWidget {
 
 // Clase para crear tarea
 class CrearPreguntaState extends State<CrearPregunta> {
-  //AccesoBD base = new AccesoBD();
+  AccesoBD base = new AccesoBD();
   var tipoElegido = "NINGÚN TIPO ELEGIDO";
   var tipo;
   var fotoTomada;
@@ -304,7 +304,8 @@ class CrearPreguntaState extends State<CrearPregunta> {
                       Icons.save,
                     ),
                     onPressed: () {
-                      crearTablon();
+                      List<String> Res = <String>[controladorRespuesta1.text,controladorRespuesta2.text, controladorRespuesta3.text, controladorRespuesta4.text];
+                      AccesoBD.addPregunta(controladorNombre.text,Res);
                     },
                   ))),
           SizedBox(
