@@ -1,11 +1,11 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:preguntitas/acceso_bd.dart';
 
 import 'package:preguntitas/registro.dart';
 
 import 'firebase_options.dart';
+import 'homepage.dart';
 
 class Inicio extends StatefulWidget {
   @override
@@ -19,6 +19,7 @@ class InicioState extends State<Inicio> {
   double offSetActual = 0;
   int anchoUsuarios = 130;
   int espacioEntreUsuarios = 72;
+  final controllerISBN = TextEditingController();
 
   bool verBotonAbajo = false, verBotonArriba = false;
 
@@ -32,7 +33,7 @@ class InicioState extends State<Inicio> {
 
 
     super.initState();
-    AccesoBD.consultarNuevaPregunta();
+
     //obtenerAutenticacion();
     //inicializar();
     //Notificacion.showBigTextNotification(title: "Bienvenio", body: "LA gran notificacion", fln: flutterLocalNotificationsPlugin);
@@ -93,68 +94,8 @@ class InicioState extends State<Inicio> {
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
                 ))),
-        body: Stack(children: [
-          ListaUsuarios(),
-          Visibility(
-            visible: verBotonArriba,
-            child: Container(
-              alignment: FractionalOffset(0.98, 0.01),
-              child: FloatingActionButton(
-                  heroTag: "botonUp",
-                  child: Icon(
-                    Icons.arrow_upward,
-                  ),
-                  elevation: 1.0,
-                  onPressed: () {
-                    offSetActual -= 150.0;
-                    if (offSetActual <=
-                        homeController.position.minScrollExtent) {
-                      offSetActual = homeController.position.minScrollExtent;
-                    } else {
-                      verBotonAbajo = true;
-                    }
-
-                    _actualizar();
-
-                    homeController.animateTo(
-                      offSetActual, // change 0.0 {double offset} to corresponding widget position
-                      duration: Duration(seconds: 1),
-                      curve: Curves.easeOut,
-                    );
-                  }),
-            ),
-          ),
-          Visibility(
-            visible: verBotonAbajo,
-            child: Container(
-              alignment: FractionalOffset(0.98, 0.99),
-              child: FloatingActionButton(
-                  heroTag: "botonDown",
-                  child: Icon(
-                    Icons.arrow_downward,
-                  ),
-                  elevation: 1.0,
-                  onPressed: () {
-                    offSetActual += 150;
-
-                    if (offSetActual >=
-                        homeController.position.maxScrollExtent) {
-                      offSetActual = homeController.position.maxScrollExtent;
-                    } else {
-                      verBotonArriba = true;
-                    }
-
-                    _actualizar();
-
-                    homeController.animateTo(
-                      offSetActual, // change 0.0 {double offset} to corresponding widget position
-                      duration: Duration(seconds: 1),
-                      curve: Curves.easeOut,
-                    );
-                  }),
-            ),
-          ),
-        ]));
+        body: ListaUsuarios(),
+          );
   }
 
   // Metodo para inicializar y cargar los datos necesarios
@@ -220,6 +161,28 @@ class InicioState extends State<Inicio> {
         Text(
             'Rafael Guzmán , Blanca Abril , Javier Mesa , José Paneque , Hicham Bouchemma , Emilio Vargas'
                 .toUpperCase()),
+        SizedBox(height: 15,),
+        TextField(
+          controller: controllerISBN,
+          decoration: const InputDecoration(
+          hintText: 'Introduce un nombre'
+        )),
+        SizedBox(height: 5,),
+        ElevatedButton(
+          child: Container(
+          width: anchoUsuarios.toDouble(),
+          padding: EdgeInsets.only(bottom: 10),
+          child: Text(
+          "Iniciar Sesión",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.bold,
+          fontSize: 25,
+        ),
+        ),),onPressed: (){
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) =>
+                    HomePage()));
+        },),
         SizedBox(height: 15,),
         ElevatedButton(
           child: Container(
