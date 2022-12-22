@@ -10,6 +10,21 @@ class AccesoBD{
    static var db = FirebaseFirestore.instance;
 
 
+   static comprobarNick(nick) async
+   {
+     await db.collection("usuarios").where("nick" , isEqualTo: nick).get().then((result){
+
+       if(result.size == 0)
+         {
+           return null;
+         }
+       else
+         {
+           return result.docs[0].get("tipo");
+         }
+
+     });
+   }
 
    static registrarUsuario(nick) async{
      Map<String,dynamic> usuario = {
