@@ -17,6 +17,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:preguntitas/main.dart';
 
 class Inicio extends StatefulWidget {
   @override
@@ -39,7 +40,7 @@ class InicioState extends State<Inicio> {
   void initState() {
     super.initState();
     //obtenerAutenticacion();
-    inicializar();
+    //inicializar();
     //Notificacion.showBigTextNotification(title: "Bienvenio", body: "LA gran notificacion", fln: flutterLocalNotificationsPlugin);
     //Sesion.reload();
     //Sesion.paginaActual = this;
@@ -137,7 +138,6 @@ class InicioState extends State<Inicio> {
                   heroTag: "botonDown",
                   child: Icon(
                     Icons.arrow_downward,
-                    color: GuardadoLocal.colores[2],
                   ),
                   elevation: 1.0,
                   onPressed: () {
@@ -164,7 +164,7 @@ class InicioState extends State<Inicio> {
   }
 
   // Metodo para inicializar y cargar los datos necesarios
-  inicializar() async {
+ /* inicializar() async {
     if (Sesion.argumentos.length == 0) {
       await Sesion.db.consultarTodosUsuarios().then((e) {
         usuarios = e;
@@ -186,9 +186,9 @@ class InicioState extends State<Inicio> {
     }
 
     Sesion.argumentos.clear();
-  }
+  }*/
 
-  SeleccionUsuario() async {
+  /*SeleccionUsuario() async {
     if (Sesion.metodoLogin == "free") {
       await Navigator.push(
           context, MaterialPageRoute(builder: (context) => MyHomePage()));
@@ -197,8 +197,8 @@ class InicioState extends State<Inicio> {
           context, MaterialPageRoute(builder: (context) => PasswordLogin()));
     }
 
-    inicializar();
-  }
+    //inicializar();
+  }*/
 
   // Widget para cargar las imagenes que van en los creditos
   Widget ImagenUGR() {
@@ -280,7 +280,6 @@ class InicioState extends State<Inicio> {
                             textAlign: TextAlign.center,
                             style: TextStyle(fontWeight: FontWeight.bold,
                               fontSize: 25,
-                              color: GuardadoLocal.colores[2],
                             ),
                           ),
                           Image.network(
@@ -297,7 +296,7 @@ class InicioState extends State<Inicio> {
                         ],
                       )),
                   onPressed: () {
-                    Sesion.id = usuarios[j].id;
+                    /*Sesion.id = usuarios[j].id;
                     Sesion.nombre = usuarios[j].nombre;
                     Sesion.rol = usuarios[j].rol;
                     Sesion.foto = usuarios[j].foto;
@@ -310,7 +309,7 @@ class InicioState extends State<Inicio> {
                           ? Passportmethod.pin.toString()
                           : Passportmethod.text.toString();
                     }
-                    SeleccionUsuario();
+                    SeleccionUsuario();*/
                   },
                 ))
         ]),
