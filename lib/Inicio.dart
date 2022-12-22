@@ -18,6 +18,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:preguntitas/main.dart';
+import 'package:preguntitas/registro.dart';
 
 class Inicio extends StatefulWidget {
   @override
@@ -225,6 +226,40 @@ class InicioState extends State<Inicio> {
         Text(
             'Rafael Guzmán , Blanca Abril , Javier Mesa , José Paneque , Hicham Bouchemma , Emilio Vargas'
                 .toUpperCase()),
+        ElevatedButton(
+          child: Container(
+              width: anchoUsuarios.toDouble(),
+              padding: EdgeInsets.only(bottom: 10),
+              child: Column(
+                children: [
+                  Text(
+                    "Ve al registro de Usuarios",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                  ),
+                  /*Image.network(
+                    usuarios[j].foto,
+                    width: 120,
+                    height: 120,
+                    fit: BoxFit.fill,
+                    errorBuilder: (context, exception, stacktrace) {
+                      print(exception.toString());
+                      return Image.asset('assets/desconocido.jpg',
+                          width: 90, height: 90);
+                    },
+                  ),*/
+                ],
+              )),
+          onPressed: () async {
+            await Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        Registro()));
+          },
+        )
       ]);
     else {
       return OrientationBuilder(
