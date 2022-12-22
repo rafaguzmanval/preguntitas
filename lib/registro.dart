@@ -8,8 +8,7 @@ class Registro extends StatefulWidget {
 class RegistroState extends State<Registro> {
   int _counter = 0;
   final controllerISBN = TextEditingController();
-  String titulo = '', autor = '';
-
+  List<String> items = <String>['Normal','Admin'];
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -38,12 +37,22 @@ class RegistroState extends State<Registro> {
             TextField(
               controller: controllerISBN,
               decoration: const InputDecoration(
-                  hintText: 'Introduce un ISBN'
+                  hintText: 'Introduce un nombre'
               ),
             ),
-            Text(
-              'Titulo: $titulo \n Autor: $autor',
-            )
+            DropdownButton<String>(
+                items: items.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                    );
+                    }).toList(),
+                onChanged: (String? value) {
+                    // This is called when the user selects an item.
+                    setState(() {
+                  });
+                }
+                ),
           ],
         ),
       ),
