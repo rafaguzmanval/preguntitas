@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:preguntitas/creacion_cuestionario.dart';
 import 'package:preguntitas/CrearPregunta.dart';
+import 'package:preguntitas/Inicio.dart';
 class HomePage extends StatefulWidget {
   @override
   HomePageState createState() => HomePageState();
 }
 
+
+
 class HomePageState extends State<HomePage> {
-  var rol = 'usuario';
+
 
   @override
   void initState() {

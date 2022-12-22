@@ -12,6 +12,7 @@ class Inicio extends StatefulWidget {
   @override
   InicioState createState() => InicioState();
 }
+var rol = 'usuario';
 
 class InicioState extends State<Inicio> {
   var usuarios;
@@ -147,6 +148,7 @@ class InicioState extends State<Inicio> {
               error = true;
             }else{
               error = false;
+              rol = tipo;
               Navigator.push(context, MaterialPageRoute(
                   builder: (context) =>
                       HomePage()));
