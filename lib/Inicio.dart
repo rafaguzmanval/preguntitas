@@ -1,6 +1,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:preguntitas/acceso_bd.dart';
 
 import 'package:preguntitas/registro.dart';
 
@@ -20,6 +21,7 @@ class InicioState extends State<Inicio> {
   int anchoUsuarios = 130;
   int espacioEntreUsuarios = 72;
   final controllerISBN = TextEditingController();
+  var error = false;
 
   bool verBotonAbajo = false, verBotonArriba = false;
 
@@ -33,46 +35,6 @@ class InicioState extends State<Inicio> {
 
 
     super.initState();
-
-    //obtenerAutenticacion();
-    //inicializar();
-    //Notificacion.showBigTextNotification(title: "Bienvenio", body: "LA gran notificacion", fln: flutterLocalNotificationsPlugin);
-    //Sesion.reload();
-    //Sesion.paginaActual = this;
-    homeController = new ScrollController();
-    homeController.addListener(_scrollListener);
-  }
-
-  _scrollListener() {
-    if (homeController.position.maxScrollExtent > 0) {
-      if (homeController.offset >= homeController.position.maxScrollExtent &&
-          !homeController.position.outOfRange) {
-        setState(() {
-          //Cuando llega al fondo del scroll
-          verBotonAbajo = false;
-          verBotonArriba = true;
-        });
-      }
-      if (homeController.offset <= homeController.position.minScrollExtent &&
-          !homeController.position.outOfRange) {
-        setState(() {
-          //Cuando está al empezar el scroll
-          verBotonArriba = false;
-          verBotonAbajo = true;
-        });
-      }
-
-      if (homeController.offset > homeController.position.minScrollExtent &&
-          homeController.offset < homeController.position.maxScrollExtent) {
-        setState(() {
-          verBotonArriba = true;
-          verBotonAbajo = true;
-        });
-      }
-    } else {
-      verBotonArriba = false;
-      verBotonAbajo = false;
-    }
   }
 
   // Contructor de la estructura de la pagina
@@ -81,11 +43,6 @@ class InicioState extends State<Inicio> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-            leading: IconButton(
-                icon: Icon(Icons.arrow_back,),
-                onPressed: () {
-                  Navigator.pop(context);
-                }),
             title: Center(
                 child: Text(
                   'Preguntas',
@@ -153,7 +110,7 @@ class InicioState extends State<Inicio> {
 
   // Devuelve la lista de usuarios
   Widget ListaUsuarios() {
-    if (usuarios == null)
+    if (usuarios == null) {
       return Column(children: [
         Text(nombre),
         ImagenUGR(),
@@ -167,6 +124,10 @@ class InicioState extends State<Inicio> {
           decoration: const InputDecoration(
           hintText: 'Introduce un nombre'
         )),
+        Visibility(visible:error,child: Stack(children: [
+          SizedBox(height: 15,),
+          Text('El usuario introducido no existe',style: TextStyle(color: Colors.red),)
+        ],)),
         SizedBox(height: 5,),
         ElevatedButton(
           child: Container(
@@ -178,10 +139,17 @@ class InicioState extends State<Inicio> {
           style: TextStyle(fontWeight: FontWeight.bold,
           fontSize: 25,
         ),
-        ),),onPressed: (){
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) =>
-                    HomePage()));
+        ),),onPressed: ()async {
+            var tipo = await AccesoBD.comprobarNick(controllerISBN.text);
+
+            if(tipo==null){
+              error = true;
+            }else{
+              error = false;
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) =>
+                      HomePage()));
+            }
         },),
         SizedBox(height: 15,),
         ElevatedButton(
@@ -211,6 +179,7 @@ class InicioState extends State<Inicio> {
                 ],
               )),
           onPressed: () async {
+            error = false;
             await Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -219,7 +188,7 @@ class InicioState extends State<Inicio> {
           },
         )
       ]);
-    else {
+    } else {
       return OrientationBuilder(
         builder: (context, orientation) => orientation == Orientation.portrait
             ? buildPortrait()
