@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:preguntitas/creacion_cuestionario.dart';
 import 'package:preguntitas/CrearPregunta.dart';
-
 class HomePage extends StatefulWidget {
   @override
   HomePageState createState() => HomePageState();
 }
 
 class HomePageState extends State<HomePage> {
-  var rol = 'administrador';
+  var rol = 'usuario';
 
   @override
   void initState() {
@@ -56,7 +56,14 @@ class HomePageState extends State<HomePage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ElevatedButton(onPressed: (){}, child: Text('Resolver Cuestionario'))
+        ElevatedButton(onPressed: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      Cuestionario()));
+        },
+            child: Text('Resolver Cuestionario'))
       ],
     );
   }
