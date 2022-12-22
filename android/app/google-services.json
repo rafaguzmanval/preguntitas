@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "630771365086",
+    "project_id": "preguntititas",
+    "storage_bucket": "preguntititas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630771365086:android:f97d5ff443c4afa6cabe4f",
+        "android_client_info": {
+          "package_name": "com.example.preguntitas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630771365086-6u39mduck57urqag6cos13j072a6i3jt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnZn-In5F7-HCIzIyXe9ldv3D6JiJQPl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630771365086-6u39mduck57urqag6cos13j072a6i3jt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
