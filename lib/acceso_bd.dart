@@ -37,8 +37,13 @@ class AccesoBD{
    static consultarNuevaPregunta() async{
      var consulta = await db.collection("preguntas").get();
      var pregunta = consulta.docs[Random().nextInt(consulta.size)];
-     print(pregunta.get("pregunta"));
-     print(pregunta.get("respuestas"));
+
+     Map<String,dynamic> preguntita = {
+       'pregunta':pregunta.get("pregunta"),
+       'respuestas' : pregunta.get("respuestas")
+     };
+
+     return preguntita;
    }
 
    static addPregunta(String pregunta,List respuestas) async
