@@ -26,7 +26,7 @@ class AccesoBD{
      print(pregunta.get("respuestas"));
    }
 
-   static addPregunta(pregunta,respuestas) async
+   static addPregunta(String pregunta,List respuestas) async
    {
      Map<String,dynamic> nueva = {
        'pregunta': pregunta,
