@@ -8,6 +8,7 @@ class AccesoBD{
    static var db = FirebaseFirestore.instance;
 
 
+
    static registrarUsuario(nick) async{
      Map<String,dynamic> usuario = {
        'nick':nick,
@@ -17,7 +18,7 @@ class AccesoBD{
    }
 
    static consultarNuevaPregunta() async{
-     await db.collection("preguntas")
+     //await db.collection("preguntas")
    }
 
 }
