@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:preguntitas/Inicio.dart';
+
 import 'package:preguntitas/registro.dart';
+
+
+
 
 
 void main() {
@@ -47,6 +51,7 @@ class MyHomePage extends StatefulWidget {
 
   final String title;
 
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -64,6 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {

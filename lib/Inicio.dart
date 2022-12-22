@@ -16,10 +16,16 @@
 * */
 
 
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:preguntitas/main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:preguntitas/registro.dart';
 
+import 'firebase_options.dart';
+
+var db = FirebaseFirestore.instance;
 class Inicio extends StatefulWidget {
   @override
   InicioState createState() => InicioState();
@@ -36,10 +42,26 @@ class InicioState extends State<Inicio> {
   bool verBotonAbajo = false, verBotonArriba = false;
 
   var homeController;
+  var nombre = "cargando...";
+
+  cogerInformacion()async{
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+
+    await db.collection("usuarios").get().then((consulta){
+       nombre = consulta.docs[0].get("nick");
+       print(nombre);
+       _actualizar();
+    });
+  }
 
   @override
   void initState() {
+
+
     super.initState();
+    cogerInformacion();
     //obtenerAutenticacion();
     //inicializar();
     //Notificacion.showBigTextNotification(title: "Bienvenio", body: "LA gran notificacion", fln: flutterLocalNotificationsPlugin);
@@ -221,6 +243,7 @@ class InicioState extends State<Inicio> {
   Widget ListaUsuarios() {
     if (usuarios == null)
       return Column(children: [
+        Text(nombre),
         ImagenUGR(),
         Text('Créditos: Los mochileros'),
         Text(
