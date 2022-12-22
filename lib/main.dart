@@ -119,3 +119,10 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
+//Refinamiento
+//sprint planning
+//Crear los diseños
+//accesos a la base de datos
+//Daylist al principio, al medio y al fin.
