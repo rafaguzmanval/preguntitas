@@ -212,7 +212,7 @@ class InicioState extends State<Inicio> {
               fit: BoxFit.fill,
             ),
           ],
-          Image.asset("assets/mochileros.png", width: 100, height: 100)
+
         ]));
   }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:preguntitas/Inicio.dart';
+import 'package:preguntitas/registro.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      supportedLocales: [Locale('es', 'ES'), Locale('en', 'US')],
+      //supportedLocales: [Locale('es', 'ES'), Locale('en', 'US')],
       title: 'Proyecto Colegio Especial',
 
       initialRoute: '/',
@@ -24,8 +26,8 @@ class MyApp extends StatelessWidget {
        // '/home' : (context) =>  MyHomePage(),
       },
 
-      theme:
-      ThemeData(fontFamily: "Escolar",textTheme: TextTheme(bodyText2: TextStyle(fontSize: 30,fontWeight: FontWeight.bold))),
+      //theme:
+      //ThemeData(fontFamily: "Escolar",textTheme: TextTheme(bodyText2: TextStyle(fontSize: 30,fontWeight: FontWeight.bold))),
       //home: ProfeAlumno(),
     );
   }
